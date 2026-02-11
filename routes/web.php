@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/hola', [\App\Http\Controllers\ProductosController::class, 'hola']);
+Route::post('/datosFormulario', [\App\Http\Controllers\ProductosController::class, 'datosFormulario']);
 
 
 Route::prefix('productos')->group(function () {

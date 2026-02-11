@@ -15,6 +15,15 @@ class ProductosController extends Controller
         return 'Hola mundo desde controllador';
     }
 
+    public function datosFormulario(Request $resquest){
+        $resquest->validate([
+            'nombre' => 'required',
+            'precio' => 'required|numeric',
+        ]);
+
+        return 'Hola mundo desde controllador';
+    }
+
     public function index(){
 
         $data = DB::table('m_productos')->select('id', 'nombre')->get();
