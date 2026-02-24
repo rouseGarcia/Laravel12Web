@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +31,72 @@ Route::prefix('productos')->group(function () {
 });
 
 
+Route::prefix('session')->group(function () {
+   Route::get('set', function () {
+//       session()->put('data.active', true);
+//       session()->put('data.precio', 12);
 
+       $data = [
+           'active' => false,
+           'precio' => 10
+       ];
+       Session::put('data', $data);
+
+       //otros procesos descuento 50%
+//       session()->put('data.precio', 6);
+   });
+   Route::get('get', function () {
+       return
+       session()->all();
+   });
+   Route::get('delete', function () {
+       session()->forget('active');
+   });
+});
+Route::get('/test', [ProductosController::class, 'prueba']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/prueba/productos', [\App\Http\Controllers\UserController::class, 'getProducts']);
+
+
+
+
+Route::prefix('users')->group(function () {
+    Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('user.principal');
+    Route::get('/{id}', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+    Route::get('/create', [\App\Http\Controllers\UserController::class, 'index']);
+})->as('users');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+require __DIR__.'/auth.php';
 require __DIR__.'/auth.php';

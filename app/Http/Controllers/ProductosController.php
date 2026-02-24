@@ -50,4 +50,9 @@ class ProductosController extends Controller
         return $data;
 
     }
+
+    public function prueba()
+    {
+        return generalTest2();
+    }
 }

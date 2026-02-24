@@ -44,6 +44,11 @@
     </div>
 
 
+
+
+@include('headerLayout', ['example' => 'dato des de la otra vista'])
+
+
 <script>
     $.ajaxSetup({
         headers: {

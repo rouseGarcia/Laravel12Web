@@ -12,4 +12,8 @@ class Productos extends Model
     protected $table = 'm_productos';
     protected $primaryKey = 'id';
     protected $fillable = ['nombre', 'precio', 'registro_activo'];
+
+
+
+
 }
