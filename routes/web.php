@@ -55,6 +55,8 @@ Route::prefix('session')->group(function () {
 });
 Route::get('/test', [ProductosController::class, 'prueba']);
 
+Route::post('/cambio-idioma', [ProductosController::class, 'cambioIdioma']);
+
 
 
 
@@ -73,6 +75,7 @@ Route::get('/test', [ProductosController::class, 'prueba']);
 
 
 Route::get('/prueba/productos', [\App\Http\Controllers\UserController::class, 'getProducts']);
+Route::get('/pruebaApi', [\App\Http\Controllers\UserController::class, 'testHttp']);
 
 
 

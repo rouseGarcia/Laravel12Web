@@ -5,9 +5,13 @@
 
 
 <h1>
-    Productos {{ $nombre }}
+    {{__('text.productos.title')}} @lang('text.productos.title') {{trans('text.productos.title')}} {{ $nombre }} {{ \Illuminate\Support\Facades\App::getLocale() }}
 </h1>
 
+<select id="lang">
+    <option>en</option>
+    <option>es</option>
+</select>
 
 @foreach($listaProductos as $producto)
     <p>
@@ -38,7 +42,7 @@
                 <input name="precio" type="text" class="form-control" id="precio">
             </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">{{__('text.common.save')}}</button>
         </form>
 
     </div>
@@ -98,6 +102,23 @@
         //
         // $('#click').remove();
         //alert("click")
+    })
+
+
+    $('#lang').change(function (){
+        const lang = $('#lang').val();
+
+        $.ajax({
+            url: '/cambio-idioma',
+            type: 'post',
+            data:{
+              lang: lang
+            },
+            success: function (response){
+                window.location.reload()
+            }
+        })
+
     })
 </script>
 

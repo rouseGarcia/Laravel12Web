@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductosController extends Controller
 {
@@ -54,5 +56,11 @@ class ProductosController extends Controller
     public function prueba()
     {
         return generalTest2();
+    }
+
+    public function cambioIdioma(Request $resquest){
+        Session::put('locale', $resquest->input('lang'));
+        App::setLocale($resquest->input('lang'));
+        dd(app()->getLocale());
     }
 }
